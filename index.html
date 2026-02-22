@@ -97,16 +97,23 @@
               </svg>
             </a>
           </div>
-          <nav class="d-none d-lg-block">
-            <ul>
+          <nav class="collapse" id="navbarCollapse">
+            <div class="menu_container"></div>
+
+            <!-- <ul>
               <li>
-                <a href="#">
+                <a
+                  href="#"
+                  class="dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   <span>
                     <img src="assets/menu-icons/Products.svg" alt="Products" />
                   </span>
                   Products</a
                 >
-                <div class="mega_menu">
+                <div class="mega_menu dropdown-menu">
                   <div class="container">
                     <div class="dropdown">
                       <div class="row row-gap-4">
@@ -214,6 +221,56 @@
                   </span>
                   Recipes</a
                 >
+                <div class="mega_menu">
+                  <div class="container">
+                    <div class="dropdown">
+                      <div class="row row-gap-4">
+                        <div class="col-lg-4 col-md-6">
+                          <a href="#">
+                            <div class="image">
+                              <img
+                                src="assets/menu-images/menu-1.png"
+                                alt="ALUMINUM FOIL"
+                              />
+                            </div>
+                            <div class="content">
+                              <h3>ALUMINUM FOIL</h3>
+                              <p>Perfect for grilling baking, and more</p>
+                            </div>
+                          </a>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <a href="#">
+                            <div class="image">
+                              <img
+                                src="assets/menu-images/menu-1.png"
+                                alt="ALUMINUM FOIL"
+                              />
+                            </div>
+                            <div class="content">
+                              <h3>ALUMINUM FOIL</h3>
+                              <p>Perfect for grilling baking, and more</p>
+                            </div>
+                          </a>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                          <a href="#">
+                            <div class="image">
+                              <img
+                                src="assets/menu-images/menu-1.png"
+                                alt="ALUMINUM FOIL"
+                              />
+                            </div>
+                            <div class="content">
+                              <h3>ALUMINUM FOIL</h3>
+                              <p>Perfect for grilling baking, and more</p>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
                 <a href="#">
@@ -242,7 +299,7 @@
                   Story</a
                 >
               </li>
-            </ul>
+            </ul> -->
           </nav>
           <div class="right_side d-flex flex-column align-items-center">
             <div class="social_links d-none d-lg-block">
@@ -281,7 +338,7 @@
         </div>
 
         <!-- Mobile Collapse Menu -->
-        <div class="collapse d-lg-none" id="navbarCollapse">
+        <!-- <div class="collapse d-lg-none" id="navbarCollapse">
           <div class="mobile-menu-wrapper">
             <nav class="mobile-nav">
               <ul>
@@ -463,7 +520,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </header>
 
@@ -518,7 +575,46 @@
         <p class="mb-0">&copy; 2026 Web Project</p>
       </div>
     </footer>
+    <script>
+      const menu = [
+        {
+          title: "Products",
+          items: [{ title: "Aluminum Foil" }, { title: "Parchment Paper" }],
+        },
+        {
+          title: "About",
+          items: [{ title: "Our Story" }, { title: "Team" }],
+        },
+      ];
 
+      document.querySelector(".menu_container").innerHTML = `
+  <ul>
+    ${menu
+      .map((item) => {
+        const key = Object.keys(item)[0];
+        return `
+        <li>
+          <a href="#">${item[key]}
+            <ul>
+              ${item.items
+                .map((subItem) => {
+                  const subKey = Object.keys(subItem)[0];
+                  return `
+                  <li>
+                    <a href="#">${subItem[subKey]}</a>
+                  </li>
+                `;
+                })
+                .join("")}
+            </ul>
+            </a>
+        </li>
+      `;
+      })
+      .join("")}
+  </ul>
+`;
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
